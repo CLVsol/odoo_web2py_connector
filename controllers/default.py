@@ -17,6 +17,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.        #
 ################################################################################
 
+from __future__ import print_function
+
+from gluon.tools import Service
 
 URL_ERROR = URL('default', 'error')
 
@@ -26,13 +29,13 @@ def index():
 
 
 def error():
-    # print '>>>>>', 'There is an error!'
+    # print('>>>>>', 'There is an error!')
     return H1('There is an error!')
 
 
 def sum():
     # http://ubun14:8000/odoo_web2py_connector/default/sum/4/8
-    # print request.args
+    # print(request.args)
     x = request.args(0)
     y = request.args(1)
     if not all([x, y]):
@@ -42,7 +45,23 @@ def sum():
 
 def sum2():
     # http://ubun14:8000/odoo_web2py_connector/default/sum2/?x=4&y=8
-    # print request.vars
+    # print(request.vars)
     x = request.vars['x'] or redirect(URL_ERROR)
     y = request.vars.y or redirect(URL_ERROR)
     return int(x) + int(y)
+
+service = Service(globals())
+
+
+@service.xmlrpc
+def add(a, b):
+    return a + b
+
+
+@service.xmlrpc
+def sub(a, b):
+    return a - b
+
+
+def call():
+    return service()
