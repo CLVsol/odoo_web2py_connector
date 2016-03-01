@@ -39,7 +39,7 @@ def call():
 
 
 @service.xmlrpc
-def user_test(test_user, test_user_pw, xmlrpc_user, xmlrpc_user_pw):
+def user_test(xmlrpc_user, xmlrpc_user_pw):
 
     import xmlrpclib
 
@@ -49,6 +49,9 @@ def user_test(test_user, test_user_pw, xmlrpc_user, xmlrpc_user_pw):
     xmlrpc_sock_common_url = 'http://' + xmlrpc_hostname + ':8069/xmlrpc/common'
     xmlrpc_sock_str = 'http://' + xmlrpc_hostname + ':8069/xmlrpc/object'
     xmlrpc_dbname = 'clvhealth_biobox_dev'
+
+    test_user = xmlrpc_user
+    test_user_pw = xmlrpc_user_pw
 
     login_msg = ''
     user_name = ''
