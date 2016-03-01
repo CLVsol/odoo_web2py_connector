@@ -23,7 +23,8 @@ URL_ERROR = URL('default', 'error')
 
 
 def index():
-    return 'Odoo web2py Connector'
+    response.flash = T("Odoo web2py Connector")
+    return dict(message=T('Welcome to Odoo web2py Connector!'))
 
 
 def error():
