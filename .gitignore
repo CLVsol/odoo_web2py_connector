@@ -39,3 +39,4 @@ nosetests.xml
 errors
 sessions
 uploads
+databases
